@@ -1,0 +1,21 @@
+Create requirements.txt: Make sure you have a requirements.txt file to specify all your dependencies (e.g., fastapi, uvicorn, httpx). You can generate this using:
+
+
+
+pip freeze > requirements.txt
+This will create a requirements.txt file with all the libraries you have installed in your virtual environment.
+
+Build the Docker image: In the terminal (in your project folder), run:
+
+docker build -t azure-fastapi-app .
+This will build the image with the name azure-fastapi-app.
+
+Run the Docker container:
+
+
+docker run -d -p 8000:8000 azure-fastapi-app
+-d: Runs the container in detached mode.
+
+-p 8000:8000: Maps port 8000 on your local machine to port 8000 in the container.
+
+Now your FastAPI app should be running in a Docker container and accessible at http://localhost:8000.
