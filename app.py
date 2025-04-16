@@ -4,7 +4,7 @@ import pyodbc
 
 app = FastAPI()
 
-# Azure SQL DB credentials (replace placeholders)
+
 server = 'webappsql-server.database.windows.net'
 database = 'webappdb'
 username = 'yourusername'   # <-- replace with your DB username
