@@ -1,21 +1,16 @@
 trigger:
   branches:
     include:
-      - main
+      - main  # or whatever branch you want to trigger this from
 
 pool:
-  name: Default
-
-variables:
-  imageName: 'fastapi-app'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: Docker@2
-  displayName: 'Build and Push to ACR'
   inputs:
-    containerRegistry: 'webapp-acr-conn'
+    containerRegistry: 'webappproject'
     repository: 'fastapi-app'
     command: 'buildAndPush'
-    Dockerfile: 'Dockerfile'
-    tags: |
-      latest
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
