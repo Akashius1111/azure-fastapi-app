@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-service  # Name of the service
+spec:
+  selector:
+    app: fastapi-app  # Match the deployment's label
+  ports:
+    - protocol: TCP
+      port: 80  # Port exposed by the service
+      targetPort: 80  # The port on the FastAPI container
+  type: LoadBalancer  # Expose the service using a LoadBalancer

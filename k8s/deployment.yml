@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-app  # Name of the deployment
+spec:
+  replicas: 2  # Number of pods to run (scale as needed)
+  selector:
+    matchLabels:
+      app: fastapi-app  # Label selector to match pods
+  template:
+    metadata:
+      labels:
+        app: fastapi-app  # Label for the pods
+    spec:
+      containers:
+      - name: fastapi-container  # Container name
+        image: <your_acr_name>.azurecr.io/fastapi-app:latest  # Replace with your ACR image
+        ports:
+        - containerPort: 80  # FastAPI app runs on port 80 by default
