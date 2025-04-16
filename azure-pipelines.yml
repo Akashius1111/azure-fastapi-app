@@ -1,16 +1,11 @@
-trigger:
-  branches:
-    include:
-      - main  # or whatever branch you want to trigger this from
-
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
 - task: Docker@2
   inputs:
-    containerRegistry: 'webappproject'
-    repository: 'fastapi-app'
+    containerRegistry: 'webappproject'   # This is your service connection name to ACR
+    repository: 'fastapi-app'             # Image name in your ACR
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: 'Dockerfile'              # Path to your Dockerfile
     tags: 'latest'
