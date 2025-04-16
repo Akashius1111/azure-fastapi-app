@@ -4,7 +4,7 @@ pool:
 steps:
 - task: Docker@2
   inputs:
-    containerRegistry: 'webapp-acr-conn'   # This is your service connection name to ACR
+    containerRegistry: 'webapp-acr-conn'   
     repository: 'fastapi-app'             # Image name in your ACR
     command: 'buildAndPush'
     Dockerfile: 'Dockerfile'              # Path to your Dockerfile
