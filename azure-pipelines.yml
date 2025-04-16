@@ -1,21 +1,21 @@
 trigger:
   branches:
     include:
-      - main  # Trigger pipeline on commits to the 'main' branch
+      - main  # or whatever your working branch is
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  imageName: 'azure-fastapi-app'
+  imageName: 'fastapi-app'
 
 steps:
 - task: Docker@2
+  displayName: 'Build and Push to ACR'
   inputs:
-    containerRegistry: '<Your-ACR-Service-Connection>'  # Azure Container Registry connection in DevOps
-    repository: webapp.azurecr.io/$(imageName)'
+    containerRegistry: 'webapp-acr-conn'
+    repository: 'fastapi-app'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: 'Dockerfile'
     tags: |
       latest
-    buildContext: .
