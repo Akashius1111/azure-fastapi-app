@@ -4,7 +4,7 @@ trigger:
       - main  # or whatever your working branch is
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default
 
 variables:
   imageName: 'fastapi-app'
